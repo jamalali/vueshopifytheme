@@ -1,0 +1,279 @@
+[
+  {
+    "name": "Navigation",
+    "settings": [
+      {
+        "type": "color",
+        "id": "campaign-logo-fill-colour",
+        "label": "Vivo Life logo colour",
+        "default": "#000000",
+        "info": "Default colour: #000000"
+      },
+      {
+        "type": "link_list",
+        "id": "shop_menu",
+        "label": "Shop menu",
+        "info": "These will be the Shop links in the main navigation"
+      },
+      {
+        "type": "header",
+        "content": "Shop - Extra links"
+      },
+      {
+        "type": "text",
+        "id": "shop_extra_1_text",
+        "label": "Link 1 text"
+      },
+      {
+        "type": "url",
+        "id": "shop_extra_1_url",
+        "label": "Link 1 url"
+      },
+      {
+        "type": "text",
+        "id": "shop_extra_2_text",
+        "label": "Link 2 text"
+      },
+      {
+        "type": "url",
+        "id": "shop_extra_2_url",
+        "label": "Link 2 url"
+      },
+      {
+        "type": "header",
+        "content": "Shop - Promo box"
+      },
+      {
+        "type": "image_picker",
+        "id": "shop_promo_image",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "shop_promo_text",
+        "label": "Text"
+      },
+      {
+        "type": "url",
+        "id": "shop_promo_url",
+        "label": "Url"
+      },
+      {
+        "type":       "text",
+        "id":         "account-menu-filter-sub",
+        "label":      "Account Menu: Filter for Subscription Portal Links",
+        "default":    "Subscribe",
+        "info":       "This will look for and hide any subscription portal links for customers have never had a subscription. Choose the word for it to look out for - it has to be used in the naming of the category of subscription links. It is case sensitive."
+      }
+    ]
+  },
+  {
+    "name": "Campaign Bar",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "campaign-running",
+        "label": "Show campaign annoucement bar?",
+        "info": "This will display the annoucement bar at the top of every page."
+      },
+      {
+        "type": "checkbox",
+        "id": "hide-multi-discount",
+        "label": "Hide the Multi Purchase Discount?",
+        "info": "This will hide the multi purchase discount throughout the store, but won't switch it off - ask tech to switch off the actual cart script."
+      },
+      {
+        "type": "text",
+        "id": "product-sub-cta",
+        "label": "Subscription CTA text",
+        "info": "This will show on the HeroAddToCart widget on the product page for those where subs is turned off ('noSub' tag). Making this field empty stops it showing."
+      },
+      {
+        "type": "radio",
+        "id": "campaign",
+        "label": "Which campaign?",
+        "options": [
+          {
+            "value": "custom",
+            "label": "Custom"
+          },
+          {
+            "value": "valentines",
+            "label": "Valentine's Day"
+          },
+          {
+            "value": "ocean-week",
+            "label": "Ocean Week"
+          },
+          {
+            "value": "green-friday",
+            "label": "Green Friday"
+          },
+          {
+            "value": "winter",
+            "label": "Seasons Greetings"
+          }
+        ],
+        "default": "custom",
+        "info": "These relate to different campaign styles. Description and further settings below."
+      },
+      {
+        "type": "header",
+        "content": "Custom"
+      },
+      {
+        "type": "paragraph",
+        "content": "This will create an annoucement bar with a coloured/image background and text of your choosing."
+      },
+      {
+        "type": "color",
+        "id": "campaign-custom-background-colour",
+        "label": "Background Colour",
+        "default": "#4AB857",
+        "info": "Default colour: #4AB857"
+      },
+      {
+        "type": "image_picker",
+        "id": "campaign-custom-background-image",
+        "label": "Background Image"
+      },
+      {
+        "type": "range",
+        "id": "campaign-custom-background-overlay",
+        "min": 30,
+        "max": 100,
+        "step": 10,
+        "label": "Background Overlay",
+        "default": 100,
+        "info": "100: No overlay"
+      },
+      {
+        "type": "text",
+        "id": "campaign-custom-text",
+        "label": "Text"
+      },
+      {
+        "type": "radio",
+        "id": "campaign-custom-text-shade",
+        "label": "Which text shade?",
+        "options": [
+          {
+            "value": "light",
+            "label": "Light"
+          },
+          {
+            "value": "dark",
+            "label": "Dark"
+          }
+        ],
+        "default": "light",
+        "info": "Choose the text colour shade depending on the overall colour of the chosen background colour or image."
+      },
+      {
+        "type": "url",
+        "id": "campaign-custom-link",
+        "label": "Link"
+      },
+      {
+        "type": "header",
+        "content": "Valentine's Day"
+      },
+      {
+        "type": "paragraph",
+        "content": "This will create a valentines themed annoucement bar with red background and falling red hearts. The site logo also changes to one with a Cupid's arrow."
+      },
+      {
+        "type": "text",
+        "id": "campaign-valentines-text",
+        "label": "Text",
+        "default": "Happy Valentine's Day"
+      },
+      {
+        "type": "header",
+        "content": "Ocean Week"
+      },
+      {
+        "type": "paragraph",
+        "content": "This is the ocean plastic minded sales week. This adds a blue themed annoucement bar with UPS ticker, plastic count, and end-of-sale clock, and turns the homepage banner heading text blue. The content has to be manually updated."
+      },
+      {
+        "type": "header",
+        "content": "Green Friday"
+      },
+      {
+        "type": "paragraph",
+        "content": "This is the green minded sales weekend usually at the same time as Black Friday. This adds a green themed annoucement bar with UPS ticker, tree count, and end-of-sale clock, and turns the homepage banner heading text green. The content has to be manually updated."
+      },
+      {
+        "type": "header",
+        "content": "Seasons Greetings"
+      },
+      {
+        "type": "paragraph",
+        "content": "This will create a winter themed annoucement bar with red background and white snow. The site logo also changes to one with a Santa's hat."
+      },
+      {
+        "type": "text",
+        "id": "campaign-winter-text",
+        "label": "Text",
+        "default": "Seasons Greetings"
+      }
+    ]
+  },
+  {
+    "name": "Product Filters",
+    "settings": [
+      {
+        "type": "text",
+        "id": "filter_1_title",
+        "label": "Filter 1 Title"
+      },
+      {
+        "type": "text",
+        "id": "filter_1_options",
+        "label": "Filter 1 Options"
+      },
+      {
+        "type": "text",
+        "id": "filter_2_title",
+        "label": "Filter 2 Title"
+      },
+      {
+        "type": "text",
+        "id": "filter_2_options",
+        "label": "Filter 2 options"
+      },
+      {
+        "type": "text",
+        "id": "filter_3_title",
+        "label": "Filter 3 Title"
+      },
+      {
+        "type": "text",
+        "id": "filter_3_options",
+        "label": "Filter 3 options"
+      },
+      {
+        "type": "text",
+        "id": "filter_4_title",
+        "label": "Filter 4 Title"
+      },
+      {
+        "type": "text",
+        "id": "filter_4_options",
+        "label": "Filter 4 options"
+      }
+    ]
+  },
+  {
+    "name": "New Customer Discount",
+    "settings": [
+      {
+        "type": "text",
+        "id": "new_customer_discount_code",
+        "label": "New Customer Discount Code",
+        "default": "NEWCUSTOMER1234"
+      }
+    ]
+  }
+]

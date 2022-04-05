@@ -1,0 +1,15 @@
+17/11/2021 - version: 2.1.2
+- Reduced moment package size.
+- Change chunk naming so that the hash only changes once the content changes.
+
+24/09/2021 - version: 2.1.1
+- You now can use npm run prod-no-cr to run it without chunk remover.
+- The watcher should now be fixed, you should be able to keep theme kit running and the other watcher starting after it now.
+- There is now default globals.json and images.json files, the actual content yet to be decided just used en-GB ones for now,
+  then it loads the locale version and should override properties.
+- There is a new logging system that has overhauled the output capabilities of the script and introduces --log-levels= option.
+- The 5 chunks a time on the remover should be back working as it was.
+- Did some re-factoring of functions that were just too big and complex and broke them down.
+- Lodash is now a dependency but it was in package.json anyway, Winston is a new dependency and provides our logging functionality.
+  (make sure to npm install)
+- Other small fixes to output and error handling.

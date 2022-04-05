@@ -1,0 +1,1999 @@
+/**
+ * This injects Tailwind's base styles, which is a combination of
+ * Normalize.css and some additional base styles.
+ *
+ * You can see the styles here:
+ * https://github.com/tailwindcss/tailwindcss/blob/master/css/preflight.css
+ *
+ * If using `postcss-import`, you should import this line from it's own file:
+ *
+ * @import "./tailwind-preflight.css";
+ *
+ * See: https://github.com/tailwindcss/tailwindcss/issues/53#issuecomment-341413622
+ */
+
+@import "tailwindcss/base";
+
+/**
+ * This injects all of Tailwind's utility classes, generated based on your
+ * config file.
+ *
+ * If using `postcss-import`, you should import this line from it's own file:
+ *
+ * @import "./tailwind-utilities.css";
+ *
+ * See: https://github.com/tailwindcss/tailwindcss/issues/53#issuecomment-341413622
+ */
+
+@import "tailwindcss/utilities";
+
+/**
+ * Here you would add any of your custom component classes; stuff that you'd
+ * want loaded *before* the utilities so that the utilities could still
+ * override them.
+ *
+ * Example:
+ *
+ * .btn { ... }
+ * .form-input { ... }
+ *
+ * Or if using a preprocessor or `postcss-import`:
+ *
+ * @import "components/buttons";
+ * @import "components/forms";
+ */
+
+/* Override Tailwind - In v0.x, the default line-height was 1.15 (inherited from
+   normalize.css). Since that value isn't part of Tailwind's default theme, we've
+   opted to change it to 1.5 for v1.0 so the default line-height matches a value
+   in the line-height scale. */
+html {
+    line-height: 1.15;
+}
+
+/* Override Tailwind - In v1.0 h1-h6 browser styles have been purposefully overridden. */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}
+h1 {
+    font-size: 2em;
+}
+h2 {
+    font-size: 1.5em;
+}
+h3 {
+    font-size: 1.17em;
+}
+h4 {
+    /* Standard size */
+}
+h5 {
+    font-size: 0.83em;
+}
+h6 {
+    font-size: 0.67em;
+}
+
+/* Override Tailwind - In v1.0 all ul and ol elements are unstyled by default. */
+ul {
+    list-style-type: disc;
+    padding-left: theme('padding.4');
+}
+ol {
+    list-style-type: decimal;
+    padding-left: theme('padding.4');
+}
+
+/* Override Tailwind - Browser default is 'inline-block' and 'baseline' respectively.
+   v1.0 overrides this behaviour. */
+embed, iframe, img, object, svg, video {
+    display: initial;
+    vertical-align: initial;
+}
+
+p {
+    @apply my-4;
+}
+
+b, strong {
+    font-weight: 600;
+}
+
+input {
+    border-radius: 0;
+}
+
+.body--blur {
+    filter: blur(7px);
+}
+
+.body--no-scroll {
+    @apply h-screen overflow-hidden w-screen;
+}
+
+.btn {
+    @apply bg-green flex items-center justify-center p-4 relative text-center text-white uppercase;
+    transition: background-color 0.3s ease-in;
+}
+
+.btn:hover {
+    @apply bg-green-dark;
+}
+
+.btn-no-transition {
+    transition: none;
+}
+
+.btn.btn-no-transition:hover {
+    @apply bg-grey;
+}
+
+.success {
+    @apply pt-4 pb-4 text-white bg-green;
+}
+
+.errors {
+    @apply pt-4 pb-4 text-white;
+    background-color: #C0271C;
+}
+
+.errors a {
+    @apply text-white;
+}
+
+.product-hero-description-text {
+    @apply leading-normal max-w-full mx-4 text-center text-sm;
+}
+
+.product-hero-description-text ul li {
+    @apply mb-2;
+}
+
+.product-hero-description-text ul {
+    @apply -ml-6;
+}
+
+@screen md {
+    .product-hero-description-text p {
+        @apply text-base;
+    }
+    .product-hero-description-text ul li {
+        @apply text-sm;
+    }
+}
+
+@screen lg {
+    .product-hero-description-text p {
+        @apply text-lg;
+    }
+    .product-hero-description-text ul li {
+        @apply text-base;
+    }
+}
+
+@screen xl {
+    .product-hero-description-text p {
+        @apply text-xl;
+    }
+    .product-hero-description-text ul li {
+        @apply text-sm;
+    }
+}
+
+@responsive {
+    .hide-bullets ul {
+        list-style: none;
+    }
+}
+
+@responsive {
+    .show-bullets ul {
+        list-style: initial;
+    }
+}
+
+.modal-background {
+    @apply fixed inset-x-0 inset-y-0;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 999999999;
+    overflow-y: auto;
+}
+
+.comparison-table {
+    @apply text-center text-sm;
+    border-spacing: 0;
+}
+
+.comparison-table__cell {
+    @apply border-b-2 border-black font-medium px-2 py-2;
+}
+
+.comparison-table__cell--featured {
+    @apply bg-green border-green font-extrabold text-white;
+}
+
+.comparison-table__cell:nth-child(2n):not(.comparison-table__cell--featured) {
+    @apply bg-grey-21;
+}
+
+.comparison-table__cell--empty {
+    border-bottom: 0;
+    height: 2rem;
+}
+
+.nutrition-table {
+    @apply bg-white border-2 border-white mt-8 w-full;
+    border-spacing: 0;
+}
+
+.nutrition-table th {
+    @apply px-3 py-3 text-left;
+}
+
+.nutrition-table tr:nth-child(even) td {
+    @apply bg-grey-lighter;
+}
+
+.nutrition-table td {
+    @apply px-3 py-2 text-left;
+}
+
+.pseudo-btn {
+    @apply cursor-pointer;
+}
+
+.pseudo-btn:focus {
+    outline: 0;
+}
+
+.slick-dots {
+    @apply flex justify-center list-none p-0 mt-8;
+}
+
+.slick-dots li {
+    background-color: #DEDEDE;
+    height: 4px;
+    margin: 0 4px;
+    overflow: hidden;
+    transition: background-color 0.3s;
+    width: 33px;
+}
+
+.slick-dots button {
+    color: transparent;
+    outline: none;
+}
+
+.slick-dots li.slick-active {
+    background-color: #B5D310;
+}
+
+.stroke-w-4 {
+    stroke-width: 4px;
+}
+
+.plus-button {
+    fill: none;
+    stroke: #fff;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+}
+
+.cross-icon {
+    fill: none;
+    stroke: #d90000;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+    stroke-width: 4px;
+}
+
+.btn--rayen, .btn--nobg {
+    @apply overflow-hidden relative text-white;
+}
+
+.btn--rayen {
+    @apply bg-green;
+}
+
+.btn--rayen.btn--rayen-ghost {
+    @apply bg-white text-green;
+}
+
+.btn--rayen>span, .btn--nobg>span {
+    display: block;
+    transition: transform 0.3s;
+    transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+
+.btn--rayen:hover>span, .btn--nobg:hover>span {
+    transform: translate3d(0, 100%, 0);
+}
+
+.btn--rayen::before, .btn--nobg::before {
+    align-items: center;
+    bottom: 0;
+    color: theme('colors.white');
+    content: attr(data-text);
+    display: flex;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate3d(-100%, 0, 0);
+    transition: transform 0.3s;
+    transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+
+.btn--rayen::before {
+    background-color: theme('colors.green-dark');
+}
+
+.btn--rayen::focus, .btn--nobg::focus {
+    outline: 0;
+}
+
+.btn--rayen:hover::before, .btn--nobg:hover::before {
+    transform: translate3d(0, 0, 0);
+}
+
+.btn--hover-purple-dark::before {
+    background-color: theme('colors.purple-dark');
+}
+
+.btn--hover-green-light::before {
+    background-color: theme('colors.green-light');
+}
+
+.btn--hover-green-lighter::before {
+    background-color: theme('colors.green-lighter');
+}
+
+.btn--hover-green-darkest::before {
+    background-color: theme('colors.green-darkest');
+}
+
+.btn--hover-teal-dark::before {
+    background-color: theme('colors.teal-dark');
+}
+
+.btn--hover-orange-dark::before {
+    background-color: theme('colors.orange-dark');
+}
+
+.btn--hover-green-thrive-dark::before {
+    background-color: theme('colors.green-thrive-dark');
+}
+
+.btn--hover-green-thrive::before {
+    background-color: theme('colors.green-thrive');
+}
+
+.btn--hover-omega-green::before {
+    background-color: theme('colors.omega-green');
+}
+
+.btn--hover-green::before {
+    background-color: theme('colors.omega-green');
+}
+
+@responsive {
+    .subscribe-button {
+        @apply border-l-0 border-t-2;
+    }
+}
+
+.box-svg {
+    stroke-miterlimit: 10;
+}
+
+.paginate span a {
+    @apply text-grey font-bold px-2 no-underline;
+}
+
+.paginate span,
+.paginate span.current {
+    @apply text-black font-bold px-3;
+}
+
+.paginate .next a,
+.paginate .prev a {
+    @apply uppercase text-black;
+}
+
+.NutritionalTable {
+    @apply mx-auto text-sm tracking-normal;
+    border-spacing: 0;
+    text-align: left;
+}
+
+.NutritionalTable thead th {
+    @apply font-normal text-sm !important;
+}
+
+.NutritionalTable tr th {
+    @apply font-extrabold px-2 py-2;
+    border-bottom: 1px solid rgba(64, 64, 64, 0.38);
+}
+
+.NutritionalTable tr td {
+    @apply font-extrabold px-2 py-2 text-green-thrive;
+    border-bottom: 1px solid rgba(64, 64, 64, 0.38);
+}
+
+@screen lg {
+    .NutritionalTable {
+        @apply text-xl;
+        border-spacing: 0;
+        text-align: left;
+    }
+    .NutritionalTable thead th {
+        @apply text-lg !important;
+    }
+    .NutritionalTable tr th {
+        @apply px-7 py-5;
+    }
+    .NutritionalTable tr td {
+        @apply px-7 py-5;
+    }
+}
+@responsive {
+    .vivo-hidden {
+        @apply hidden;
+    }
+}
+
+/**
+ * Here you would add any custom utilities you need that don't come out of the
+ * box with Tailwind.
+ *
+ * Example :
+ *
+ * .bg-pattern-graph-paper { ... }
+ * .skew-45 { ... }
+ *
+ * Or if using a preprocessor or `postcss-import`:
+ *
+ * @import "utilities/background-patterns";
+ * @import "utilities/skew-transforms";
+ */
+
+.whitespace-no-wrap {
+    white-space: nowrap;
+}
+
+@media screen and (max-height: 860px) {
+    .flexfix {
+        position: absolute;
+        top: 0;
+    }
+}
+
+.cursor-none {
+    cursor: none;
+}
+
+.-bottom-0-6 {
+    bottom: -1.5rem;
+}
+
+.left-24 {
+    left: 6rem;
+}
+
+.transform-origin-center {
+    transform-origin: 50% 50%;
+}
+
+.transition-300 {
+    transition-duration: 0.3s;
+}
+
+.transition-all {
+    transition-property: all;
+}
+
+.transition-bg {
+    transition-property: background-color;
+}
+
+.transition-transform {
+    transition-property: transform;
+}
+
+.transition-ease {
+    transition-timing-function: ease;
+}
+
+.transition-cubic-bezier {
+    transition: all 0.3s cubic-bezier(0.310, -0.105, 0.430, 1.400);
+}
+
+@variants focus,
+hover {
+    .scale-1\.2 {
+        transform: scale(1.2);
+    }
+    .scale-1\.4 {
+        transform: scale(1.4);
+    }
+}
+
+.scale-80 {
+    transform: scale(0.8);
+}
+
+.group:hover .group-hover\:scale-100 {
+    transform: scale(1);
+}
+
+.-rotate-90 {
+    transform: rotate(-90deg);
+}
+
+.rotate-90 {
+    transform: rotate(90deg);
+}
+
+.rotate-180 {
+    transform: rotate(180deg);
+}
+
+.group:hover .group-hover\:translate-left-full {
+    transform: translateX(-100%);
+}
+
+.group:hover .group-hover\:translate-right-full {
+    transform: translateX(100%);
+}
+
+.placeholder-black::placeholder,
+.placeholder-black::-webkit-input-placeholder {
+    @apply opacity-100;
+    color: theme('colors.black');
+}
+
+.sub-menu-item:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #1d1d1d;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.sub-menu-item:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
+
+/**
+ * Background size utilities.
+ */
+
+@responsive {
+    .bg-full {
+        background-size: 100%;
+    }
+}
+
+
+/**
+ * Background image utilities.
+ */
+
+@responsive {
+    .bg-banana {
+        background-image: url('./banana-header.jpg');
+    }
+    .bg-perform-banana-3 {
+        background-image: url('./perform-banana-3-4.jpg');
+    }
+    .bg-ambassadors-kitchen-trio {
+        background-image: url('./ambassadors-kitchen-trio.jpg');
+    }
+    .bg-beach-group {
+        background-image: url('./beach-group.jpg');
+    }
+    .bg-beach-party {
+        background-image: url('./beach-party.jpg');
+    }
+    .bg-concrete {
+        background-image: url('./concrete_seamless.jpg');
+    }
+    .bg-concrete-fade-top {
+       background-image: linear-gradient(#fff, rgba(255, 255, 255, 0) 48rem), url('./concrete_seamless.jpg');
+    }
+    .bg-concrete-top-half {
+       background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, #fff 50.01%), url('./concrete_seamless.jpg');
+    }
+    .bg-cress {
+        background-image: url('./cress.jpg');
+    }
+    .bg-forest-road {
+        background-image: url('./forest-road.jpg');
+    }
+    .bg-home-push-up {
+        background-image: url('./home-push-up.jpg?v=201904151418');
+    }
+    .bg-guarantee {
+        background-image: url('./maca-matcha-hero-lower-2.jpg');
+    }
+    .bg-maca-matcha-fade-top {
+        background-image: url('./maca-matcha-fade-top.jpg');
+    }
+    .bg-guarantee-maca {
+        background-image: url('./maca-Hero-Lower.jpg');
+    }
+    .bg-guarantee-sustain {
+        background-image: url('./sustain-Hero-Lower.jpg');
+    }
+    .bg-guarantee-thrive-her {
+        background-image: url('./thrive-Hero-Lower.jpg');
+    }
+    .bg-guarantee-thrive-him {
+        background-image: url('./thrivehim-Hero-Lower.jpg');
+    }
+    .bg-guarantee-matcha {
+        background-image: url('./matcha-Hero-Lower.jpg');
+    }
+    .bg-guarantee-perform {
+        background-image: url('./Perform-Hero-Lower.jpg');
+    }
+    .bg-guy-in-alley {
+        background-image: url('./for-the-living-bg.jpg');
+    }
+    .bg-home-hero {
+        background-image: url('./home-header.jpg?v=201904151426');
+    }
+    .bg-home-hero-mobile {
+        background-image: url('./home-header-mobile-4.jpg');
+    }
+    .bg-maca-hero {
+        background-image: url('./maca-hero.jpg');
+    }
+    .bg-matcha-hero {
+        background-image: url('./matcha-hero-3.jpg');
+    }
+    .bg-matcha-maca-hero {
+        background-image: url('./Matcha-Maca-Hero-2.jpg');
+    }
+    .bg-matcha-maca-hero-mobile {
+        background-image: url('./matcha-maca-hero-mobile-2.jpg');
+    }
+    .bg-matcha-maca-hero-mobile-2 {
+        background-image: url('./match-maca-hero-mobile-2.jpg');
+    }
+    .bg-muscular-dude {
+        background-image: url('./perform-bg-muscular-dude.jpg');
+    }
+    .bg-perform-hero {
+        background-image: url('./Perform-Hero.jpg');
+    }
+    .bg-perform-hero-portrait {
+        background-image: url('./perform-mobile.jpg');
+    }
+    .bg-shop-now-background {
+        background-image: url('./home-shop-now-desktop-v6.jpg');
+    }
+    .bg-shop-now-mob-background {
+        background-image: url('./home-shop-now-mobile-v6.jpg');
+    }
+    .bg-sports-drinks-hero {
+        background-image: url('./sports-drink-hero-2.jpg');
+    }
+    .bg-sports-drinks-hero-mobile {
+        background-image: url('./sports-drink-hero-mobile.jpg');
+    }
+    .bg-sunset {
+        background-image: url('./sunset.jpg');
+    }
+    .bg-sustain-hero {
+        background-image: url('./Sustain-Hero2.jpg');
+    }
+    .bg-sustain-review {
+        background-image: url('./sustain-review.jpg');
+    }
+    .bg-thrive-banner {
+        background-image: url('./thrive-overhead.jpg');
+    }
+    .bg-thrive-hero {
+        background-image: url('./thrive-hero-background.jpg');
+    }
+    .bg-thrive-hero-mobile {
+        background-image: url('./thrive-overhead-mobile.jpg');
+    }
+    .bg-thrive-her-hero {
+        background-image: url('./Thrive-Her-Hero.jpg');
+    }
+    .bg-thrive-him-hero {
+        background-image: url('./Thrive-HIM-HERO.jpg');
+    }
+    .bg-transparent-to-white {
+        background-image: linear-gradient(rgba(255, 255, 255, 0), #ffffff 25%);
+    }
+    .bg-wheat-close-up {
+        background-image: url('./wheat-close-up-2.jpg?v=201904151415');
+    }
+    .bg-wheat-close-up-fade-top {
+        background-image: linear-gradient(#fff, rgba(255, 255, 255, 0) 50%), url('./wheat-close-up-2.jpg?v=201904151415');
+    }
+    .bg-wheat-field {
+        background-image: url('./hay.jpg');
+    }
+    .bg-wheat-field-fade-top {
+        background-image: linear-gradient(#fff, rgba(255, 255, 255, 0) 50%), url('./hay.jpg');
+    }
+    .bg-windfarm {
+        background-image: url('./windfarm.jpg');
+    }
+    .bg-windfarm-mobile {
+        background-image: url('./windfarm-mobile.jpg');
+    }
+    .bg-women-gym {
+        background-image: url('./women-gym-2.jpg');
+    }
+    .no-bg-img {
+        background-image: none;
+    }
+    .bg-full-w {
+        background-size: 100% auto;
+    }
+    .bg-water {
+        background-image: url('./water.jpg');
+    }
+    .bg-all-products-hero {
+        background-image: url('./all-products-hero.jpg');
+    }
+    .bg-all-products-hero-mobile {
+        background-image: url('./all-products-hero-mobile.jpg');
+    }
+    .bg-green-80-left {
+        background-image: linear-gradient(to left, white 20%, #b5d310 20%);
+    }
+    .bg-green-50-top {
+        background-image: linear-gradient(#b5d310 80%, white 80%);
+    }
+    .bg-maca-matcha-fade-top-3 {
+        background-image: url('./maca-matcha-fade-top-3.jpg')
+    }
+    .bg-white-to-grey {
+        background-image: linear-gradient(white, #f2f2f2 50%)
+    }
+    .bg-gradient-grey-to-transparent {
+        background-image: linear-gradient(rgba(245, 245, 245, 1), rgba(255, 255, 255, 0) 25%)
+    }
+    .bg-gradient-black-to-transparent {
+        background: rgb(0,0,0);
+        background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(55,55,55,0.2) 100%);
+    }
+    .bg-leaf {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6)), url('./leaf.jpg');
+    }
+    .bg-perform-offer {
+        background-image: url('./perform-offer-package.jpg');
+    }
+    .bg-perform-offer-2 {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.64)), url('./Perform-Hero-Small-Offer-new.jpg');
+    }
+    .bg-thrive-30-day {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.64)), url('./bg-thrive-30-day-challenge-02.jpg');
+    }
+    .bg-thrive-30-day-mobile {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.64)), url('./bg-thrive-30-day-challenge-02-mobile.jpg');
+    }
+    .bg-thrive-30-day-what-is {
+        background-image: url('./thrive-hero-background-2020.jpg');
+    }
+    .bg-omega {
+        background-image: url('./bg-omega3-hero.jpg');
+    }
+    .bg-omega-howtouse-hero {
+        background-image: url('./bg-omega-howtouse-hero.jpg');
+    }
+    .bg-omega-howtouse-hero-2x {
+        background-image: url('./bg-omega-howtouse-hero@2x.jpg');
+    }
+    .bg-omega-white-lid {
+        background-image: url('./bg-omega3-white-lid.jpg');
+    }
+    .bg-d3 {
+        background-image: url('./bg-d3-hero.jpg');
+    }
+    .bg-d3-we-believe {
+        background-image: url('./bg-d3-howtouse-hero.jpg');
+    }
+    .bg-d3-howtouse-hero {
+        background-image: url('./bg-d3-howtouse-hero.jpg');
+    }
+    .bg-d3-howtouse-hero-2x {
+        background-image: url('./bg-d3-howtouse-hero@2x.jpg');
+    }
+    .bg-b12 {
+        background-image: url('./bg-b12-hero.jpg');
+    }
+    .bg-b12-we-believe {
+        background-image: url('./b12-how-to-use-hero-new.jpg');
+    }
+    .bg-b12-howtouse-hero {
+        background-image: url('./b12-how-to-use-hero-new.jpg');
+    }
+    .bg-b12-howtouse-hero-2x {
+        background-image: url('./b12-how-to-use-hero-new@2x.jpg');
+    }
+    .bg-ow-top {
+        background-image: url('./ow-ocean-background-top-banner-desktop.jpg');
+    }
+    .bg-ow-top-mobile {
+        background-image: url('./ow-ocean-background-top-banner-mobile.jpg');
+    }
+    .bg-ow-overview-we-believe {
+        background-image: url('./ow-overview-we-believe-desktop.jpg');
+    }
+    .bg-ow-counter-blue {
+        background-image: url('./ow-counter-blue.png');
+    }
+    .bg-gf-top {
+        background-image: url('./gf-hero-bg.jpg?v=1109a');
+    }
+    .bg-gf-top-mobile {
+        background-image: url('./gf-hero-bg-mobile.jpg?v=1111');
+    }
+    .bg-gf-overview-we-believe {
+        background-image: url('./gf-overview-we-believe-desktop.jpg?v=1109');
+    }
+    .bg-gf-counter-green {
+        background-image: url('./gf-counter-green.png');
+    }
+    .bg-gf-counter-grey {
+        background-image: url('./gf-counter-grey.png');
+    }
+    .bg-hero-mobile-2020 {
+        background-image: linear-gradient(#EDEDED, rgba(255,255,255,1), rgba(255,255,255,1));
+    }
+    .bg-creatine-hero {
+        background-image: url('./Creatine-Hero-2020.jpg?');
+    }
+    .bg-magic-coffee-hero {
+        background-image: url('./Magic-Coffee-Hero.jpg');
+    }
+    .bg-magic-coffee-mobile-hero {
+        background-image: url('./Magic-Coffee-Hero-Mobile-Top@2x.png');
+    }
+    .bg-ritual-hero-footer {
+        background-image: url('./ritual-hero-footer.jpg');
+    }
+    .bg-perform-strawberry-hero {
+        background-image: url('./bg-strawberry-perform-desktop.jpg');
+    }
+    .bg-perform-strawberry-hero-mobile {
+        background-image: url('./bg-strawberry-perform-mobile.jpg');
+    }
+    .bg-perform-strawberry-footer {
+        background-image: url('./perform-strawberry-footer.jpg');
+    }
+    .bg-faq-header-desktop {
+        background-image: url('./bg-faq-header-desktop.jpg');
+    }
+    .bg-faq-header-mobile {
+        background-image: url('./bg-faq-header-mobile.jpg');
+    }
+    .bg-whole-overview-we-believe {
+        background-image: url('./whole-overview-we-believe-desktop.jpg');
+    }
+    .bg-veganprotein-footer {
+        background-image: url('./veganprotein-webelieve.jpg?v=111');
+        background-size: cover;
+        background-position: top left;
+    }
+    .bg-vmulti-overview-we-believe {
+        background-image: url('./vmulti-overview-we-believe-desktop.jpg');
+    }
+    .bg-magic-chaga-chai-latte-why {
+        background-image: url('./magic-chaga-chai-latte-why.jpg');
+    }
+    .bg-thrive-overview-we-believe {
+        background-image: url('./thrive-overview-we-believe.jpg');
+    }
+    .bg-plaa-hero {
+        background-image: url('./plaa-hero.gif');
+        background-size: cover;
+    }
+    .bg-plaa-mustang-hero {
+        background-image: url('./plaa-mustang-hero.png?v=210512');
+        background-size: cover;
+    }
+    .bg-plaa-gorilla-hero {
+        background-image: url('./plaa-gorilla-hero.png?v=210512');
+        background-size: cover;
+    }
+    .bg-plaa-rhino-hero {
+        background-image: url('./plaa-rhino-hero.png?v=210512');
+        background-size: cover;
+    }
+    @media only screen and (max-width: 767px) {
+        .bg-plaa-mustang-hero {
+            background-image: url('./plaa-mustang-hero-mobile.png?v=210512');
+        }
+        .bg-plaa-gorilla-hero {
+            background-image: url('./plaa-gorilla-hero-mobile.png?v=210512');
+        }
+        .bg-plaa-rhino-hero {
+            background-image: url('./plaa-rhino-hero-mobile.png?v=210512');
+        }
+        .bg-plaa-hero {
+            background-image: url('./plaa-hero-mobile.gif');
+        }
+    }
+    .bg-plaa-dashboard-hero {
+        background-image: url('./plaa-workout-demo.jpg');
+        background-size: cover;
+        background-position-x: 45%;
+    }
+    .bg-green-radial {
+        background: rgb(103,206,115);
+        background: radial-gradient(circle, rgba(103,206,115,1) 0%, rgba(74,184,87,1) 100%);
+    }
+    .bg-img-none {
+        background-image: initial;
+    }
+}
+
+@screen md {
+    .bg-magic-coffee-review {
+        background-image: url('./magic-coffee-review-2021@2x.jpg');
+    }
+}
+
+@screen xl {
+    .magic-header {
+        background-image: url('./magic-desktop-header2.jpg');
+    }
+}
+
+@variants focus {
+    .no-outline {
+        outline: none;
+    }
+    .bg-wheat-field-2 {
+        background-image: url('./field-mobile-1.jpg');
+    }
+}
+
+@responsive {
+    .no-filter {
+        filter: none;
+    }
+    .brightness-50 {
+        filter: brightness(0.50);
+    }
+    .brightness-75 {
+        filter: brightness(0.75);
+    }
+    .brightness-80 {
+        filter: brightness(0.8);
+    }
+    .brightness-95 {
+        filter: brightness(0.95);
+    }
+}
+
+@responsive {
+    .list-default {
+        list-style: initial;
+    }
+}
+
+@variants focus {
+    .no-outline {
+        outline: none;
+    }
+}
+
+@responsive {
+    .inset-y-0-center {
+        top: 50%;
+    }
+}
+
+.overflow-x-hidden {
+    overflow-x: hidden;
+}
+
+.scroll-momentum {
+    -webkit-overflow-scrolling: touch;
+}
+
+.mobileExit {
+  display:block;
+  position:fixed;
+  right:1px;
+  top:0;
+  height:100%;
+  width: 24%;
+  cursor: pointer;
+  z-index:9999;
+  margin-right:20px;
+}
+
+@responsive {
+    .fill {
+        object-fit: fill;
+    }
+    .contain {
+        object-fit: contain;
+    }
+    .cover {
+        object-fit: cover;
+    }
+    .scale-down {
+        object-fit: scale-down;
+    }
+    .none {
+        object-fit: none;
+    }
+}
+
+@responsive {
+    .pt-full-sub-16 {
+        padding-top: calc(100% - 4rem);
+    }
+    .pt-full-sub-19 {
+        padding-top: calc(100% - 4.75rem);
+    }
+}
+
+@responsive {
+    .line-through {
+        text-decoration: line-through;
+    }
+    .tabular-nums {
+        font-variant-numeric: tabular-nums;
+    }
+}
+
+.no-resize {
+    resize: none;
+}
+
+[v-cloak] {
+    @apply hidden !important;
+}
+
+.BlackFriday__CMS {
+    @apply leading-normal;
+}
+
+@responsive {
+    .bg-60p {
+        background-position: 60%;
+    }
+    .bg-75p {
+        background-position: 75%;
+    }
+}
+
+
+.modal-mask {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    display: table;
+    transition: opacity .3s ease;
+  }
+
+  .modal-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .modal-container {
+    margin: 0px auto;
+    padding: 20px 30px;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+    transition: all .3s ease;
+  }
+
+  .modal-header h3 {
+    margin-top: 0;
+  }
+
+
+  .modal-default-button {
+    float: right;
+  }
+
+  /*
+   * The following styles are auto-applied to elements with
+   * transition="modal" when their visibility is toggled
+   * by Vue.js.
+   *
+   * You can easily play with the modal transition by editing
+   * these styles.
+   */
+
+.modal-enter {
+    opacity: 0;
+}
+
+.modal-leave-active {
+    opacity: 0;
+}
+
+.modal-enter .modal-container,
+.modal-leave-active .modal-container {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+/* Vivo Custom vue-select styles. - Jed. */
+.vivo-select .vs__search::placeholder {
+    @apply font-bold text-black-full;
+    padding-left: 0.6rem;
+}
+.vivo-select .vs__dropdown-toggle,
+.vivo-select .vs__dropdown-menu {
+    @apply shadow-md border border-atc-border-grey border-solid rounded pt-2 pb-2 text-black-full;
+}
+
+.vivo-select .vs__clear,
+.vivo-select .vs__open-indicator {
+    fill: #394066;
+}
+
+.vivo-select .vs__selected, .vivo-select .vs__search  {
+    padding-left: 0.6rem;
+    @apply font-bold text-black-full;
+}
+
+.vivo-select .vs__search, .vivo-select .vs__search:focus {
+    margin: 0px 0 0;
+}
+
+.vivo-select .vs__dropdown-menu {
+    @apply font-bold;
+}
+
+/* Serving tab CSS for new user flow/add to cart, has to be global at this point. */
+.serving-tab {
+    flex-basis:50%;
+    @apply cursor-pointer p-2 pl-4;
+}
+.serving-tab-single {
+    flex-basis:100%;
+    @apply cursor-default p-2 pl-4 pr-5;
+}
+.serving-tab-active {
+    border-bottom-color:white;
+    border-bottom-width:1px;
+    z-index: 999;
+    margin-bottom: -0.07rem;
+    @apply border border-atc-border-grey border-solid rounded rounded-b-none border-b-0;
+}
+
+/* Hero Add To Cart 2020 Vue Component Styles.
+   - Jed V. <jed@vivolife.co.uk>
+ */
+
+/* Tailwind doesn't have flex-basis as default :(. */
+@responsive {
+    .basis-40 {
+        flex-basis: 40%;
+    }
+    .basis-65 {
+        flex-basis: 65%; /* 4k/High-res/Retina. */
+    }
+    .basis-80 {
+        flex-basis: 80%; /* Desktop. */
+    }
+    .basis-100 {
+        flex-basis: 100% /* Mobile. */
+    }
+}
+
+/* Make some new as-design SVG bullet points for lis in the hero header mobile version.
+ *  - Jed V. <jed@vivolife.co.uk>
+ */
+@responsive {
+    .hero-caption-bullets ul {
+        list-style-image: url(./hero-list-tick-black.png);
+    }
+}
+
+/* The select box needs the SVG animation to work on the right axis/positioning, pre launch fix for purchase flow but also solves future dropdowns site-wide when used.
+ * - Jed V. <jed@vivolife.co.uk>
+ */
+.vivo-select .vs__open-indicator {
+    transform: none;
+    transition: none;
+}
+.v-select .vs__actions {
+    display: flex;
+    align-items: flex-start;
+    padding: 4px 22px 0 3px;
+}
+
+/*  - Chris H. <mail@ckhatton.com> */
+@responsive {
+    .hero-caption-bullets-white ul {
+        list-style-image: url(./hero-list-tick-white.png);
+    }
+}
+
+@responsive {
+    .hero-caption-bullets.desktop ul, .hero-caption-bullets-white.desktop ul {
+        @apply hidden xl:block font-bold text-base pl-10;
+    }
+}
+
+@responsive {
+  .hero-caption-bullets-dark-grey ul {
+      list-style-image: url(./hero-list-tick-dark-grey-3.png);
+  }
+}
+
+@responsive {
+    .hero-caption-bullets-dark-grey ul li, .hero-caption-bullets-white ul li, .hero-caption-bullets ul li {
+        line-height: 1.6;
+        @apply -ml-1 pl-1;
+    }
+}
+
+/* The select box needs the SVG animation to work on the right axis/positioning, pre launch fix for purchase flow but also solves future dropdowns site-wide when used.
+ * - Jed V. <jed@vivolife.co.uk>
+ */
+.vivo-select .vs__open-indicator {
+    transform: none;
+    transition: none;
+}
+.v-select .vs__actions {
+    display: flex;
+    align-items: flex-start;
+    padding: 4px 22px 0 3px;
+}
+
+/* Magic Coffee Product Page
+ * - Chris H. <mail@ckhatton.com>
+ */
+
+.why .text-content {
+    position: relative;
+    line-height: 38px;
+}
+.why .text-content:before,
+.why .text-content:after {
+    content: "";
+    background-image: url('speechmark-yellow@2x.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+}
+.why .text-content:before {
+    top: 0px;
+    left: -40px;
+}
+.why .text-content:after {
+    bottom: 0px;
+    margin-left: 17px;
+}
+.why .image img {
+    border-width: 5px;
+}
+.product-magic-coffee .video-button {
+    position: absolute;
+    justify-content: center;
+    top: calc(50% - 37px);
+    left: calc(50% - 51px);
+}
+.product-magic-coffee .PulseButton {
+    background-image: url('yt-play-icon@2x.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    width: 6.428em;
+    height: 4.5em;
+    border-radius: 0 !important;
+    -webkit-animation: none !important;
+    animation: none !important;
+    background-color: initial !important;
+    transition: none !important;
+}
+.product-magic-coffee .PulseButton svg {
+    display: none;
+}
+.plaa.video-button button {
+    height: 4rem;
+}
+@screen lg {
+    .plaa.video-button button {
+        height: 6rem;
+    }
+}
+
+@screen xxl {
+    .product-magic-coffee .how-to-use .video-button:before {
+        content: "";
+        background-image: url('arrow01.svg') !important;
+        background-size: contain !important;
+        background-repeat: no-repeat !important;
+        width: 6.428em;
+        height: 4.5em;
+        position: absolute;
+        -moz-transform: scale(1, -1) rotate(-5deg);
+        -o-transform: scale(1, -1) rotate(-5deg);
+        -webkit-transform: scale(1, -1) rotate(-5deg);
+        transform: scale(1, -1) rotate(-5deg);
+        left: -120%;
+        top: -1.5em;
+    }
+}
+
+/* Homepage 2
+ * - Chris H. <mail@ckhatton.com>
+ */
+
+@media (min-width: 1600px) {
+    .shopify-section.hero-image-carousel-02 .HeroImageCarousel02,
+    .shopify-section.trustpilot > div {
+        @apply mx-15;
+    }
+}
+
+.image-hover-zoom img {
+    transition: all .7s ease;
+}
+.image-hover-zoom:hover img {
+    transform: scale(1.1);
+}
+.contents-hover-zoom > div {
+    transition: all .7s ease;
+}
+.contents-hover-zoom:hover > div {
+    transform: scale(.95);
+}
+.contents-hover-zoom-in > div {
+    transition: all .7s ease;
+}
+.contents-hover-zoom-in:hover > div {
+    transform: scale(1.05);
+}
+
+.btn-home {
+    @apply inline-block px-4 py-2 font-extrabold text-sm uppercase tracking-normal text-black-2 no-underline text-center cursor-pointer;
+    transition: all 0.3s ease;
+    min-width: 100px;
+}
+
+@screen md {
+    .btn-home {
+        @apply px-5 py-3 text-lg;
+    }
+    .md-no-flex-wrap {
+        flex-wrap: nowrap !important;
+    }
+}
+
+@screen xxl {
+    .hero-carousel .btn-home {
+        @apply py-5 text-2xl;
+        min-width: 245px;
+        min-height: 65px;
+    }
+}
+
+.btn-home.primary {
+    @apply border-2 border-off-white-5 bg-off-white-5 shadow-lg;
+}
+
+.btn-home.primary.account {
+    @apply rounded-sm border-green-thrive bg-white text-green-thrive font-semibold normal-case shadow-none;
+}
+
+.header .btn-home.primary.account {
+    @apply bg-transparent;
+}
+@screen lg {
+  .header .btn-home.primary.account {
+    @apply text-white border-white;
+  }
+}
+
+.btn-home.secondary {
+    @apply border-2 border-black-2;
+}
+
+.btn-home.secondary.account {
+    @apply rounded-sm text-green-friday-grey border-grey-light font-semibold normal-case;
+}
+
+.btn-home.primary.account.confirm,
+.btn-home.secondary.account.confirm {
+    @apply border-green-thrive bg-green-thrive text-off-white-5;
+}
+
+.btn-home.secondary.on-dark {
+    @apply text-white border-off-white-5;
+}
+
+.btn-home.secondary.on-dark.bg-black {
+    @apply text-white border-black;
+}
+
+@screen sm {
+  .btn-home.primary.account,
+  .btn-home.secondary.account {
+    @apply text-base;
+  }
+}
+
+.btn-home:hover,
+.btn-home:active,
+.btn-home:focus,
+.btn-home.primary:hover,
+.btn-home.primary:active,
+.btn-home.primary:focus,
+.btn-home.secondary:hover,
+.btn-home.secondary:active,
+.btn-home.secondary:focus,
+.btn-home.on-dark:hover,
+.btn-home.on-dark:active {
+    @apply text-green-thrive border-green-thrive;
+}
+
+.btn-home.primary:active {
+    @apply shadow-none;
+}
+.btn-home.primary.account:active {
+    @apply border-white;
+}
+.btn-home.primary.account.confirm:active,
+.btn-home.secondary.account.confirm:active {
+    @apply border-green-thrive-dark bg-green-thrive-dark;
+}
+@screen lg {
+  .header .btn-home.primary.account:hover,
+  .header .btn-home.primary.account:active,
+  .header .btn-home.primary.account:focus {
+      @apply text-white border-white;
+  }
+}
+
+/* Ritual Product Page
+ * - Chris H. <mail@ckhatton.com>
+ */
+
+.down-arrow.before:before {
+    content: "";
+    background-image: url('down-arrow.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    margin-right: 5px;
+}
+
+/* Cookie Bar
+ * - Chris H. <mail@ckhatton.com>
+ */
+
+.upsell-gdpr-banner-container {
+  z-index: 40 !important;
+  font-family: proxima-nova,sans-serif !important;
+}
+div#_ua_bannerAcceptButton {
+  font-size: 13px;
+  margin-right: 60px;
+  background: none;
+  color: black;
+  font-weight: bolder;
+  border-radius: 0 !important;
+  border: 2px solid black !important;
+  margin: 0;
+  margin-top: 3px;
+  transition: all .3s ease;
+}
+div#_ua_bannerAcceptButton:hover {
+  color: #4ab857 !important;
+  border-color: #4ab857 !important;
+}
+.upsell-gdpr-banner-message a {
+  color: #4ab857 !important;
+  text-decoration: none !important;
+}
+.upsell-gdpr-banner-container svg {
+  display: none;
+}
+.upsell-gdpr-banner-container {
+  opacity: 0.95;
+  padding: 2px 5px 5px 7px !important;
+}
+span.upsell-gdpr-banner-message {
+  font-size: 12px;
+  color:#000;
+  margin-top: 3px;
+}
+@media (min-width: 768px) {
+  .upsell-gdpr-banner-container {
+    padding: 3px 5px 5px 10px !important;
+  }
+  span.upsell-gdpr-banner-message {
+    font-size: 14px;
+    margin-top: 2px;
+  }
+}
+@media (min-width: 1364px) {
+  span.upsell-gdpr-banner-message {
+    font-size: 18px;
+  }
+}
+
+/* Blog article anchor link styling
+ * - Chris H. <mail@ckhatton.com>
+ */
+
+article section a {
+  @apply text-green-thrive underline;
+}
+
+/* Turn any text-decoration tailwind property red (used for strikethrough on RRP)
+ * - Jed V. <jed@vivolife.co.uk>
+ */
+
+.text-decoration-red {
+  text-decoration-color: #FF4A4A;
+}
+
+/* Flex Shrinking Utility
+ * - Jed V. <jed@vivolife.co.uk>
+ */
+
+@responsive {
+  .flex-shrink-10 {
+    flex-shrink: 10;
+  }
+}
+
+/* Shetty Collection Page - Tailwind header image padding fix. (xl:pb-24 tailwind not working at time of fix)
+ * - Jed V. <jed@vivolife.co.uk>
+ */
+
+ @responsive {
+  .xl-pb-24 {
+    padding-bottom: 6rem;
+  }
+  .xl--mt-48 {
+    margin-top: -12rem;
+  }
+  .xl-mt-20 {
+    margin-top: 4rem;
+  }
+}
+
+/* Main Navigation Bar
+ * - Chris H. <mail@ckhatton.com>
+ */
+
+header {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.08);
+}
+
+/* Customer Account
+ * - Chris H. <mail@ckhatton.com>
+ */
+
+.account-overview-arrow {
+  position: absolute;
+  right: -100vh;
+  border-top: solid transparent;
+  border-bottom: solid transparent;
+  border-left: solid #FFF;
+  border-right: solid transparent;
+  border-width: 80vh;
+  transform: rotate(45deg);
+  --transform-rotate: -45deg;
+}
+@media (max-width: 767px) {
+  .account-overview-arrow {
+    right: -115vh;
+    border-width: 70vh;
+  }
+}
+
+.account-block-arrow {
+  position: absolute;
+  top: -75px;
+  left: -75px;
+  border-top: solid transparent;
+  border-bottom: solid transparent;
+  border-left: solid transparent;
+  border-right: solid #4AB857;
+  border-width: 75px;
+  transform: rotate(45deg);
+  --transform-rotate: -45deg;
+}
+
+.account.menu .active > a,
+.account.menu .active-child > a,
+.account.menu .current > a,
+.account.menu .current-child > a {
+  @apply text-green-thrive;
+}
+.account.menu .active,
+.account.menu .active-child,
+.account.menu .current,
+.account.menu .current-child {
+  @apply border-green-thrive;
+}
+
+.account.menu > ul > li:last-child {
+  @apply border-b-0;
+}
+.account.menu > ul > li > a {
+  position: relative;
+}
+.account.menu > ul > li > a:before {
+  position: relative;
+  top: 2px;
+  margin-right: .75em;
+  width: 20px;
+  display: inline-block;
+}
+.account.menu .account-overview > a:before {
+  content: url(account-overview.svg);
+}
+.account.menu .my-details > a {
+  top: -4px;
+}
+.account.menu .my-details > a:before {
+  content: url(account-my-details.svg);
+  top: 4px;
+  left: 2px;
+}
+.account.menu .order-history > a:before {
+  content: url(account-order-history.svg);
+  left: 1px;
+}
+.account.menu .subscriptions > a {
+  top: -5px;
+}
+.account.menu .subscriptions > a:before {
+  content: url(account-subscriptions.svg);
+  top: 5px;
+  left: -1px;
+}
+.account.menu .refer-a-friend > a {
+  top: -6px;
+}
+.account.menu .refer-a-friend > a:before {
+  content: url(account-refer-a-friend.svg);
+  top: 6px;
+}
+.account.menu ul > li > ul {
+  padding-left: 35px;
+}
+
+.account-overview .background {
+  width: 100%;
+  height: 67vh;
+}
+.account-overview .menu-bar h1 {
+  display: none;
+}
+.account-overview .two.blocks .header .btn-home.primary.account {
+  @apply text-white border-white;
+}
+
+.account-container .pagination .prev {
+  @apply absolute left-0;
+}
+.account-container .pagination .next {
+  @apply absolute right-0;
+}
+
+.order-history table .up-arrow img {
+  transform: rotate(180deg);
+}
+.order-history table .open .up-arrow img {
+  transform: rotate(0deg);
+}
+
+.account-container .main-content input,
+.account-container .main-content select {
+  @apply border-1 border-grey-lightest bg-grey-lightest block mt-4 mb-8 p-4 rounded;
+}
+.account-container .main-content input:focus,
+.account-container .main-content select:focus {
+  @apply border-green-thrive outline-none;
+}
+
+.account-container .main-content input[type='radio'] {
+  @apply appearance-none bg-center bg-contain w-4 h-4 mt-0 mr-2 mb-0 cursor-pointer;
+  background-image: url(account-radio_deselected.svg);
+}
+.account-container .main-content input[type='radio']:checked {
+  background-image: url(account-radio_selected.svg);
+}
+
+.account-container #product_options_container label {
+  @apply w-full my-4 capitalize font-bold;
+}
+
+.account-container #product_options_container input,
+.account-container #product_options_container select {
+  @apply border-b-2 border-grey capitalize mb-8 mt-4 pl-0 py-4 w-full;
+}
+
+#rc_product_search button {
+  top: 11px;
+  right: 10px;
+}
+
+.recharge #customer-card-form {
+  width: 100%;
+  height: 450px;
+  overflow: hidden;
+}
+
+/* Order Print (Invoice)
+ * - Chris H. <mail@ckhatton.com>
+ */
+
+.printer-svg {
+  @apply inline-block w-5 h-5;
+  position: relative;
+  top: 5px;
+  left: 5px;
+}
+.printer-svg:hover svg rect {
+  @apply stroke-green-thrive !important;
+}
+.printer-svg:hover svg path {
+  @apply fill-green-thrive stroke-green-thrive !important;
+}
+
+@media print {
+  body.customers-order .mainContent,
+  body.customers-order .mainContent > div {
+    @apply pt-0;
+  }
+  body.customers-order .account-container {
+    @apply mb-0;
+  }
+  body.customers-order header {
+    @apply hidden;
+  }
+  body.customers-order .heading {
+    @apply py-4 bg-transparent border-2 border-black;
+  }
+  body.customers-order .breadcrumb,
+  body.customers-order .btn,
+  body.customers-order footer,
+  body.customers-order .vue-portal-target,
+  body.customers-order iframe,
+  body.customers-order #adroll_consent_container {
+    @apply hidden;
+  }
+}
+
+/* Vmulti Product Page
+ * - Chris H. <mail@ckhatton.com>
+ */
+
+.quote:before,
+.quote:after {
+  content: '"';
+  @apply text-green-thrive;
+  font-size: 70px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+}
+
+.quote:before {
+  top: -30px;
+  left: initial;
+  margin-left: -30px;
+}
+
+.quote:after {
+  bottom: 22px;
+  margin-left: 6px;
+}
+
+.quote.v2:before,
+.quote.v2:after {
+  content: '”';
+  font-size: 54px;
+}
+
+.quote.v2:before {
+  top: -20px;
+  transform: scaleX(-1);
+}
+
+.quote.v2:after {
+  bottom: 20px;
+  margin-left: 5px;
+}
+
+.quote.v3:before,
+.quote.v3:after {
+  content: '';
+  background-image: url(speechmark-blue@2x.png);
+  width: 4px;
+}
+
+.quote.v3:before {
+  top: -10px;
+  margin-left: -15px;
+  transform: scaleX(-1);
+}
+
+.quote.v3:after {
+  bottom: -15px;
+  margin-left: 10px;
+}
+
+.quote.v2:after, .quote.v2:before {
+ content: "\201D";
+ font-size: 54px;
+}
+
+/* Green Friday
+ * - Chris H. <mail@ckhatton.com>
+ */
+
+@media (min-width: 1600px) {
+  body.index.green-friday #how-it-works {
+    @apply mx-15;
+  }
+}
+
+body.index.green-friday #shopify-section-home-hero .footnotes {
+  display: none;
+}
+
+body.collection-green-friday .line-through {
+  text-decoration: none;
+}
+
+body.collection-green-friday .line-through:before {
+  content: "";
+  position: absolute;
+  background-image: url(gf-line-through.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 120%;
+  height: 1.3rem;
+}
+
+@media (min-width: 768px) {
+  body.collection-green-friday .line-through:before {
+    height: 1.5rem;
+  }
+}
+
+body.collection-green-friday .btn--rayen {
+  background-color: theme('colors.green-friday-green');
+}
+body.collection-green-friday .btn--rayen::before {
+  background-color: theme('colors.green-friday-green');
+}
+
+/* Magic: Chaga Chai Product Page
+ * - Chris H. <mail@ckhatton.com>
+ */
+
+body.product-magic_2020 .chage-chai-latte-why {
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: top left;
+}
+
+/* PERFORM Like an Animal
+ *
+ */
+
+.btn-home.secondary.on-dark.plaa {
+    @apply font-bold text-white capitalize border-plaa-green;
+}
+.btn-home.secondary.on-dark.plaa-strength {
+    @apply text-plaa-red border-plaa-red;
+}
+.btn-home.plaa-home-h:hover,
+.btn-home.plaa-home-h:active {
+    @apply text-plaa-green border-plaa-green;
+}
+.btn-home.plaa-strength-h:hover,
+.btn-home.plaa-strength-h:active {
+    @apply text-plaa-red border-plaa-red;
+}
+.btn-home.plaa-endurance-h:hover,
+.btn-home.plaa-endurance-h:active {
+    @apply text-plaa-purple border-plaa-purple;
+}
+.menu-bar a:hover + ul,
+.menu-bar a + ul:hover {
+    @apply block;
+}
+.btn-home.plaa-function-h:hover,
+.btn-home.plaa-function-h:active {
+    @apply text-plaa-blue border-plaa-blue;
+}
+#rc_login, #rc_login h5, #rc_login p {
+    display:none !important;
+}
+
+/* Ocean Week
+ * - Chris H. <chris@vivolife.co.uk>
+ */
+
+@media (min-width: 1600px) {
+  body.index.ocean-week #how-it-works {
+    @apply mx-15;
+  }
+}
+
+body.index.ocean-week #shopify-section-home-hero .footnotes {
+  display: none;
+}
+
+body.index.ocean-week #shopify-section-home-hero .btn-home.primary:hover,
+body.index.ocean-week #shopify-section-home-hero .btn-home.primary:active {
+   color: theme('colors.ocean-week-blue');
+   border-color: theme('colors.ocean-week-blue');
+}
+
+body.collection-ocean-week .line-through {
+  text-decoration: none;
+}
+
+body.collection-ocean-week .line-through:before {
+  content: "";
+  position: absolute;
+  background-image: url(ow-line-through.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 120%;
+  height: 1.3rem;
+}
+
+@media (min-width: 768px) {
+  body.collection-ocean-week .line-through:before {
+    height: 2rem;
+  }
+}
+
+body.collection-ocean-week .btn--rayen {
+  background-color: theme('colors.ocean-week-blue') !important;
+  padding: 0 1em;
+}
+body.collection-ocean-week .btn--rayen::before {
+  background-color: theme('colors.ocean-week-blue-2') !important;
+}

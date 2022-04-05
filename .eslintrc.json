@@ -1,0 +1,30 @@
+{
+    "env": {
+        "browser": true,
+        "node": true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:vue/essential",
+        "standardx"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "vue"
+    ],
+    "rules": {
+      "semi": ["error", "always"],
+      "no-undef": "off",
+      "no-tabs": "off",
+      "eqeqeq": "off",
+      "no-mixed-spaces-and-tabs": "off",
+      "no-unused-vars": "off",
+      "vue/no-use-v-if-with-v-for": "off",
+      "vue/no-mutating-props": "off",
+      "vue/no-parsing-error": "off",
+      "no-useless-escape": "off"
+    }
+}
